@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <!--<script src="jquery-2.2.4.js"></script>-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background-color: beige;
+        }
+
+        .container
+        {
+            position: relative;
+            width: 300px;
+            height: 390px;
+            margin: 30px auto;
+
+            background-color: aliceblue;
+            box-shadow: 7px 10px 34px 1px rgba(0,0,0,0.68), inset -1px -6px 12px 0.1px #89847e;
+
+        }
+
+        #result{
+
+            width: 260px;
+            height: 50px;
+
+            background-color: inherit;
+            border-radius: 5px;
+            border: 1px solid mintcream;
+
+            margin: 10px auto;
+
+        }
+
+
+      .resultP
+       {
+
+           line-height: 50px;
+           background-color: #89847e;
+          font-size: 18px;
+
+       }
+
+
+        .button
+        {
+            width: 50px;
+            margin-left: 15px;
+            margin-bottom: 15px;
+            float: left;
+        }
+        .red{
+
+            background-color: red;
+            width: 115px; ;
+
+        }
+
+        .button:active{
+            transform: translate(0,3px);
+            box-shadow: none;
+        }
+
+        .zero-button{
+
+            width: 115px;
+
+        }
+
+        .equal-button
+        {
+
+            height:85px ;
+            margin-top: -50px;
+
+        }
+
+        .copy
+        {
+            width: 270px;
+            position: absolute;
+            bottom: 15px;
+            font-size: 12px;
+        }
+
+    </style>
+
+</head>
+<body>
+  <div class="container" >
+
+      <div id="result" class="text-right">
+
+          <p class="resultP">
+               0
+          </p>
+
+      </div>
+
+      <div class="buttons">
+          <button class="red button btn " value="ac">AC</button>
+          <button class="button btn" value="/">&divide;</button>
+          <button class="button btn" value="*">*</button>
+
+          <button class="button btn" value="7">7</button>
+          <button class="button btn" value="8">8</button>
+          <button class="button btn" value="9">9</button>
+          <button class="button btn" value="-">-</button>
+
+          <button class="button btn" value="4">4</button>
+          <button class="button btn" value="5">5</button>
+          <button class="button btn" value="6">6</button>
+          <button class="button btn" value="+">+</button>
+
+          <button class="button btn" value="1">1</button>
+          <button class="button btn" value="2">2</button>
+          <button class="button btn" value="3">3</button>
+
+          <button class="zero-button button btn" value="0">0</button>
+          <button class="button btn" value=".">.</button>
+          <button class="equal-button button btn" value="=">=</button>
+
+
+      </div>
+
+      <div class="copy text-center">版权所有@WB</div>
+
+
+  </div>
+
+  <script>
+
+      var enterVal;
+      var enterOper;
+      var isOper=false;
+
+      $(document).ready(function () {
+
+          $("button").click(function () {
+
+              var cValue=$(this).attr("value");
+
+              switch (cValue)
+              {
+
+                  case "+":
+
+                    operate(cValue);
+
+                      break;
+                  case "-":
+
+                      operate(cValue);
+
+                      break;
+                  case "*":
+
+                      operate(cValue);
+
+                      break;
+                  case "/":
+
+                      operate(cValue);
+
+                      break;
+                  case "=":
+
+                      var result=getResult(enterVal,enterOper,$(".resultP").html());
+                      enterVal=result;
+                      $(".resultP").html(enterVal);
+                      enterOper=null;
+
+                      break;
+                  case ".":
+                      break;
+                  case "ac":
+                      $(".resultP").html(0);
+                          enterVal=0;
+                          enterOper=null;
+                      break;
+
+                  default :
+
+                          if((enterOper === '/' || enterOper === '*' || enterOper === '-' || enterOper === '+')&&isOper)
+                          {
+
+                              enterVal=$(".resultP").html();
+                              $(".resultP").html(cValue);
+                              isOper=false;
+
+                          }
+                          else
+                          {
+                              var resultPContent= $(".resultP").html();
+                              if (parseFloat(resultPContent)==0.0)
+                              {
+                                  $(".resultP").html(cValue);
+                              }
+                              else
+                              {
+                                  $(".resultP").html(resultPContent+cValue);
+
+                              }
+
+                          }
+
+                      break;
+
+              }
+
+
+
+          });
+
+      });
+
+
+      function operate(cValue) {
+
+          if(isOper)
+          {
+              enterOper=cValue;
+          }
+          else
+          {
+              if(enterOper === '/' || enterOper === '*' || enterOper === '-' || enterOper === '+')
+              {
+                  var result=getResult(enterVal,enterOper,$(".resultP").html());
+
+                  enterVal=result;
+
+                  $(".resultP").html(enterVal);
+              }
+              enterOper=cValue;
+              isOper=true;
+
+          }
+
+
+          
+      }
+      
+      function getResult(a,b,c) {
+
+          if(b)
+          {
+
+              var result;
+              switch (b)
+              {
+                  case "+":
+
+                      result=parseFloat(a)+parseFloat(c);
+                      break
+
+                  case "-":
+                      result=parseFloat(a)-parseFloat(c);
+                      break
+
+                  case "*":
+                      result=parseFloat(a)*parseFloat(c);
+                      break
+
+                  case "/":
+                      result=parseFloat(a)/parseFloat(c);
+                      break
+
+
+              }
+
+              return result;
+
+          }
+
+
+
+
+      }
+
+
+  </script>
+
+</body>
+</html>
