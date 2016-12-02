@@ -5,60 +5,48 @@
     <title>计算器</title>
     <!--<script src="jquery-2.2.4.js"></script>-->
     <script src="jquery.min.js"></script>
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap.css" rel="stylesheet">
 
     <style>
         body{
             background-color: beige;
         }
 
-        .container
+        .container1
         {
             position: relative;
-            width: 300px;
-            height: 390px;
-            margin: 30px auto;
+            margin-top: 30px;
 
             background-color: aliceblue;
             box-shadow: 7px 10px 34px 1px rgba(0,0,0,0.68), inset -1px -6px 12px 0.1px #89847e;
 
         }
 
-        #result{
-
-            width: 260px;
-            height: 50px;
-
-            background-color: inherit;
-            border-radius: 5px;
-            border: 1px solid mintcream;
-
-            margin: 10px auto;
-
-        }
-
-
-      .resultP
-       {
-
-           line-height: 50px;
-           background-color: #89847e;
-          font-size: 18px;
-
-       }
-
-
-        .button
+        .resultP
         {
-            width: 50px;
-            margin-left: 15px;
-            margin-bottom: 15px;
-            float: left;
+            margin-top: 20px;
+            line-height: 100px;
+            background-color: #89847e;
+            font-size: 18px;
+
         }
+
+        .press-btns
+        {
+            padding:10px 30px;
+
+        }
+
+        .button{
+
+            line-height: 80px;
+
+        }
+
         .red{
 
+            width: 41.6666%;
             background-color: red;
-            width: 115px; ;
 
         }
 
@@ -67,72 +55,127 @@
             box-shadow: none;
         }
 
-        .zero-button{
-
-            width: 115px;
-
-        }
-
-        .equal-button
-        {
-
-            height:85px ;
-            margin-top: -50px;
-
-        }
-
         .copy
         {
-            width: 270px;
-            position: absolute;
+            width: 100%;
             bottom: 15px;
-            font-size: 12px;
+            font-size: 15px;
+            height: 40px;
+            line-height: 40px;
         }
 
+        .normal
+        {
+
+            width: 24.9999%;
+
+        }
+        .pressleft{
+
+            margin-left:2.7777% ;
+
+        }
+
+        .normal2{
+
+            width: 22.9166%;
+
+        }
+
+        .pressleft2{
+
+            margin-left:2.0833% ;
+
+        }
+
+        .bottom
+        {
+             width: 48.1833%;
+
+
+        }
+
+        .row
+        {
+            margin-bottom: 20px;
+
+        }
     </style>
 
 </head>
 <body>
-  <div class="container" >
 
-      <div id="result" class="text-right">
+<div class="container" style="text-align:center">
+    <div class="row" >
 
-          <p class="resultP">
-               0
-          </p>
+        <div class="container1 col-xs-12 col-sm-8 col-md-offset-2" >
+            <div class="row">
+                <div id="result" class="text-right col-xs-12 col-sm-12">
 
-      </div>
+                    <p class="resultP">
+                        0
+                    </p>
 
-      <div class="buttons">
-          <button class="red button btn " value="ac">AC</button>
-          <button class="button btn" value="/">&divide;</button>
-          <button class="button btn" value="*">*</button>
+                </div>
+            </div>
 
-          <button class="button btn" value="7">7</button>
-          <button class="button btn" value="8">8</button>
-          <button class="button btn" value="9">9</button>
-          <button class="button btn" value="-">-</button>
+            <div class="row">
+                <div class="press-btns col-xs-12 col-sm-12">
+                    <div class="row ">
+                        <button class="button red btn" value="ac">AC</button>
+                        <button class="button normal btn pressleft" value="/">&divide;</button>
+                        <button class="button normal btn pressleft" value="*">*</button>
+                    </div>
 
-          <button class="button btn" value="4">4</button>
-          <button class="button btn" value="5">5</button>
-          <button class="button btn" value="6">6</button>
-          <button class="button btn" value="+">+</button>
+                    <div class="row ">
+                        <button  class="button normal2 btn " value="7">7</button>
+                        <button class="button normal2  btn pressleft2" value="8">8</button>
+                        <button class="button normal2  btn pressleft2" value="9">9</button>
+                        <button class="button normal2  btn pressleft2" value="-">-</button>
+                    </div>
 
-          <button class="button btn" value="1">1</button>
-          <button class="button btn" value="2">2</button>
-          <button class="button btn" value="3">3</button>
+                    <div class="row">
+                        <button class="button btn normal2 " value="4">4</button>
+                        <button class="button btn normal2 pressleft2" value="5">5</button>
+                        <button class="button btn normal2 pressleft2" value="6">6</button>
+                        <button class="button btn normal2 pressleft2" value="+">+</button>
+                    </div>
 
-          <button class="zero-button button btn" value="0">0</button>
-          <button class="button btn" value=".">.</button>
-          <button class="equal-button button btn" value="=">=</button>
+                    <div class="row">
+                        <button class="button btn normal2" value="1">1</button>
+                        <button class="button btn normal2 pressleft2" value="2">2</button>
+                        <button class="button btn normal2 pressleft2" value="3">3</button>
+                        <button class="zero-button button btn normal2 pressleft2" value="0">0</button>
+                    </div>
+
+                    <div class="row ">
+
+                        <button class="button btn bottom" value=".">.</button>
+                        <button class="equal-button button btn bottom pressleft2" value="=">=</button>
+                    </div>
+
+                    <div class="row ">
+
+                        <div class="copy text-center">版权所有@WB</div>
+
+                    </div>
 
 
-      </div>
-
-      <div class="copy text-center">版权所有@WB</div>
+                </div>
 
 
-  </div>
+            </div>
+        </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
 
   <script>
 
